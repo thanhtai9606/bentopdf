@@ -3,14 +3,11 @@ import { dom, switchView, hideAlert } from './ui.js';
 import { setupToolInterface } from './handlers/toolSelectionHandler.js';
 import { createIcons, icons } from 'lucide';
 import * as pdfjsLib from 'pdfjs-dist';
+import { categoryName, toolName as getToolName, toolSubtitle, t } from './site/i18n/index.js';
+import { applyI18n, initSiteChrome, setLocaleChangeHandler } from './site/site-chrome.js';
 import "../css/styles.css";
 
-const init = () => {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-        'pdfjs-dist/build/pdf.worker.min.mjs',
-        import.meta.url
-    ).toString();
-
+const renderToolGrid = () => {
     dom.toolGrid.textContent = '';
 
     categories.forEach(category => {
@@ -19,7 +16,7 @@ const init = () => {
 
         const title = document.createElement('h2');
         title.className = 'text-xl font-bold text-indigo-400 mb-4 mt-8 first:mt-0';
-        title.textContent = category.name; 
+        title.textContent = categoryName(category.categoryKey);
 
         const toolsContainer = document.createElement('div');
         toolsContainer.className = 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6';
@@ -33,17 +30,18 @@ const init = () => {
             icon.className = 'w-10 h-10 mb-3 text-indigo-400';
             icon.setAttribute('data-lucide', tool.icon);
 
-            const toolName = document.createElement('h3');
-            toolName.className = 'font-semibold text-white';
-            toolName.textContent = tool.name; 
+            const nameEl = document.createElement('h3');
+            nameEl.className = 'font-semibold text-white';
+            nameEl.textContent = getToolName(tool.id);
 
-            toolCard.append(icon, toolName);
+            toolCard.append(icon, nameEl);
 
-            if (tool.subtitle) {
-                const toolSubtitle = document.createElement('p');
-                toolSubtitle.className = 'text-xs text-gray-400 mt-1 px-2';
-                toolSubtitle.textContent = tool.subtitle; 
-                toolCard.appendChild(toolSubtitle);
+            const subtitle = toolSubtitle(tool.id);
+            if (subtitle) {
+                const subtitleEl = document.createElement('p');
+                subtitleEl.className = 'text-xs text-gray-400 mt-1 px-2';
+                subtitleEl.textContent = subtitle;
+                toolCard.appendChild(subtitleEl);
             }
 
             toolsContainer.appendChild(toolCard);
@@ -79,6 +77,23 @@ const init = () => {
         });
     });
 
+    createIcons({ icons });
+};
+
+const init = () => {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+        'pdfjs-dist/build/pdf.worker.min.mjs',
+        import.meta.url
+    ).toString();
+
+    initSiteChrome();
+    setLocaleChangeHandler(() => {
+        applyI18n();
+        renderToolGrid();
+    });
+
+    renderToolGrid();
+
     dom.toolGrid.addEventListener('click', (e) => {
         // @ts-expect-error TS(2339) FIXME: Property 'closest' does not exist on type 'EventTa... Remove this comment to see the full error message
         const card = e.target.closest('.tool-card');
@@ -90,7 +105,11 @@ const init = () => {
     dom.backToGridBtn.addEventListener('click', () => switchView('grid'));
     dom.alertOkBtn.addEventListener('click', hideAlert);
 
-    createIcons({ icons });
+    const messages = t();
+    dom.loaderText.textContent = messages.common.processing;
+    const backLabel = document.querySelector('#back-to-grid span');
+    if (backLabel) backLabel.textContent = messages.home.backToTools;
+
     console.log('Please share our tool and share the love!');
 };
 

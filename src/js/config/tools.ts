@@ -1,6 +1,7 @@
 // This file centralizes the definition of all available tools, organized by category.
 export const categories = [
         {
+        categoryKey: 'popular',
         name: 'Popular Tools',
         tools: [
             { id: 'merge', name: 'Merge PDF', icon: 'combine', subtitle: 'Combine multiple PDFs into one file.' },
@@ -16,6 +17,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'editAnnotate',
         name: 'Edit & Annotate',
         tools: [
             { id: 'edit', name: 'PDF Editor', icon: 'pocket-knife', subtitle: 'Annotate, highlight, redact, comment, add shapes/images, search, and view PDFs.' },
@@ -34,6 +36,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'convertToPdf',
         name: 'Convert to PDF',
         tools: [
             { id: 'image-to-pdf', name: 'Image to PDF', icon: 'images', subtitle: 'Combine various images into one PDF.' },
@@ -51,6 +54,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'convertFromPdf',
         name: 'Convert from PDF',
         tools: [
             { id: 'pdf-to-jpg', name: 'PDF to JPG', icon: 'file-image', subtitle: 'Convert each PDF page into a JPG image.' },
@@ -63,6 +67,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'organizeManage',
         name: 'Organize & Manage',
         tools: [
             { id: 'ocr-pdf', name: 'OCR PDF', icon: 'scan-text', subtitle: 'Make a PDF searchable and copyable.' },
@@ -87,6 +92,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'optimizeRepair',
         name: 'Optimize & Repair',
         tools: [
             { id: 'compress', name: 'Compress PDF', icon: 'zap', subtitle: 'Reduce the file size of your PDF.' },
@@ -95,6 +101,7 @@ export const categories = [
         ]
     },
     {
+        categoryKey: 'securePdf',
         name: 'Secure PDF',
         tools: [
             { id: 'encrypt', name: 'Encrypt PDF', icon: 'lock', subtitle: 'Add a password to protect your PDF.' },

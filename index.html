@@ -15,39 +15,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./images/favicon.svg">
+    <script src="/theme-init.js"></script>
     <link href="/src/css/styles.css" rel="stylesheet">
 
 </head>
 
 <body class="antialiased">
-    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-30">
+    <nav class="site-nav sticky top-0 z-30">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-16 gap-3">
                 <div class="flex-shrink-0 flex items-center cursor-pointer" id="home-logo">
                     <img src="images/favicon.svg" alt="Bento PDF Logo" class="h-8 w-8">
-                    <span class="text-white font-bold text-xl ml-2"> <a href="index.html">BentoPDF</a> </span>
+                    <span class="text-white font-bold text-xl ml-2"><a href="index.html">BentoPDF</a></span>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="./about.html" class="nav-link">About</a>
-                    <a href="./contact.html" class="nav-link">Contact</a>
-                    <a href="index.html#tools-header" class="nav-link">All Tools</a>
-                </div>
-
-                <div class="md:hidden flex items-center gap-2">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="index.html#tools-header" class="nav-link">All Tools</a>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                        <a href="./about.html" class="nav-link" data-i18n="nav.about">About</a>
+                        <a href="./contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
+                        <a href="index.html#tools-header" class="nav-link" data-i18n="nav.allTools">All Tools</a>
+                    </div>
+                    <div class="md:hidden flex items-center gap-2">
+                        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                        <a href="index.html#tools-header" class="nav-link" data-i18n="nav.allTools">All Tools</a>
+                    </div>
+                    <div class="flex items-center gap-2 pl-2 md:pl-4 border-l border-gray-700">
+                        <div id="locale-switcher"></div>
+                        <div id="theme-switcher"></div>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="./about.html" class="mobile-nav-link">About</a>
-                <a href="./contact.html" class="mobile-nav-link">Contact</a>
+                <a href="./about.html" class="mobile-nav-link" data-i18n="nav.about">About</a>
+                <a href="./contact.html" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
                 <hr class="border-gray-700 my-2">
-                <a href="#tool-grid" id="mobile-all-tools-link" class="mobile-nav-link bg-gray-700 text-white">View All
-                    Tools</a>
+                <a href="#tool-grid" id="mobile-all-tools-link" class="mobile-nav-link bg-gray-700 text-white" data-i18n="nav.viewAllTools">View All Tools</a>
             </div>
         </div>
     </nav>
@@ -55,9 +60,9 @@
 
         <div id="tools-header" class="text-center mb-12 pt-4">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
-                Get Started with <span class="marker-slanted ml-2"> Tools</span>
+                <span data-i18n="home.title">Get Started with</span> <span class="marker-slanted ml-2" data-i18n="home.titleHighlight">Tools</span>
             </h2>
-            <p class="text-gray-400">Click a tool to open the file uploader</p>
+            <p class="text-gray-400" data-i18n="home.subtitle">Click a tool to open the file uploader</p>
         </div>
 
         <div id="grid-view">
@@ -68,6 +73,7 @@
                     </span>
                     <input type="text" id="search-bar"
                         class="w-full pl-10 pr-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                        data-i18n-placeholder="home.searchPlaceholder"
                         placeholder="Search for a tool (e.g., 'split', 'organize'...)">
                 </div>
             </div>
@@ -81,7 +87,7 @@
             <button id="back-to-grid"
                 class="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-6 font-semibold">
                 <i data-lucide="arrow-left" class="cursor-pointer"></i>
-                <span class="cursor-pointer"> Back to Tools </span> 
+                <span class="cursor-pointer" data-i18n="home.backToTools">Back to Tools</span>
             </button>
             <div id="tool-content">
             </div>
@@ -91,17 +97,17 @@
             class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
             <div class="bg-gray-800 p-8 rounded-lg flex flex-col items-center gap-4 border border-gray-700 shadow-xl">
                 <div class="solid-spinner"></div>
-                <p id="loader-text" class="text-white text-lg font-medium">Processing...</p>
+                <p id="loader-text" class="text-white text-lg font-medium" data-i18n="common.processing">Processing...</p>
             </div>
         </div>
 
         <div id="alert-modal"
             class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
             <div class="bg-gray-800 max-w-sm w-full p-6 rounded-lg border border-gray-700 shadow-xl text-center">
-                <h3 id="alert-title" class="text-xl font-bold text-white mb-2">Alert</h3>
+                <h3 id="alert-title" class="text-xl font-bold text-white mb-2" data-i18n="common.alert">Alert</h3>
                 <p id="alert-message" class="text-gray-300 mb-6">This is an alert message.</p>
                 <button id="alert-ok"
-                    class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">OK</button>
+                    class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700" data-i18n="common.ok">OK</button>
             </div>
         </div>
 
@@ -109,13 +115,12 @@
             class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-40 p-4">
             <div class="bg-white text-black rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col">
                 <div class="p-4 border-b flex justify-between items-center">
-                    <h3 class="text-xl font-bold">Document Preview</h3>
+                    <h3 class="text-xl font-bold" data-i18n="common.documentPreview">Document Preview</h3>
                     <div class="flex gap-4">
                         <button id="preview-download-btn"
-                            class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">Download
-                            as PDF</button>
+                            class="btn bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700" data-i18n="common.downloadPdf">Download as PDF</button>
                         <button id="preview-close-btn"
-                            class="btn bg-gray-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-700">Close</button>
+                            class="btn bg-gray-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-700" data-i18n="common.close">Close</button>
                     </div>
                 </div>
                 <div id="preview-content" class="p-8 overflow-y-auto flex-grow">
@@ -126,7 +131,7 @@
         <div id="signature-ghost" class="hidden"></div>
     </div>
 
-    <footer class="mt-16 border-t-2 border-gray-700 py-8">
+    <footer class="site-footer mt-16 py-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div class="mb-8 md:mb-0">
@@ -134,28 +139,28 @@
                         <img src="public/images/favicon.svg" alt="Bento PDF Logo" class="h-10 w-10 mr-3">
                         <span class="text-xl font-bold text-white">BentoPDF</span>
                     </div>
-                    <p class="text-gray-400 text-sm">&copy; 2025 BentoPDF. All rights reserved.</p>
+                    <p class="text-gray-400 text-sm" data-i18n="footer.copyright">&copy; 2025 BentoPDF. All rights reserved.</p>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-white mb-4">Company</h3>
+                    <h3 class="font-bold text-white mb-4" data-i18n="footer.company">Company</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="./about.html" class="hover:text-indigo-400">About Us</a></li>
-                        <li><a href="./faq.html" class="hover:text-indigo-400">FAQ</a></li>
-                        <li><a href="./contact.html" class="hover:text-indigo-400">Contact Us</a></li>
+                        <li><a href="./about.html" class="hover:text-indigo-400" data-i18n="footer.aboutUs">About Us</a></li>
+                        <li><a href="./faq.html" class="hover:text-indigo-400" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="./contact.html" class="hover:text-indigo-400" data-i18n="footer.contactUs">Contact Us</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-white mb-4">Legal</h3>
+                    <h3 class="font-bold text-white mb-4" data-i18n="footer.legal">Legal</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="./terms.html" class="hover:text-indigo-400">Terms and Conditions</a></li>
-                        <li><a href="./privacy.html" class="hover:text-indigo-400">Privacy Policy</a></li>
+                        <li><a href="./terms.html" class="hover:text-indigo-400" data-i18n="footer.terms">Terms and Conditions</a></li>
+                        <li><a href="./privacy.html" class="hover:text-indigo-400" data-i18n="footer.privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
 
 <div>
-    <h3 class="font-bold text-white mb-4">Follow Us</h3>
+    <h3 class="font-bold text-white mb-4" data-i18n="footer.followUs">Follow Us</h3>
     <div class="flex justify-center md:justify-start space-x-4">
         <a href="https://github.com/alam00000/bentopdf" target="_blank" rel="noopener noreferrer"
             class="text-gray-400 hover:text-indigo-400" title="GitHub">

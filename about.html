@@ -5,31 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About BentoPDF - PDF Tools in the AxiosTimes Ecosystem</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/png" href="images/favicon.svg">
+    <script src="/theme-init.js"></script>
     <link href="/src/css/styles.css" rel="stylesheet">
 </head>
 
-<body class="antialiased bg-gray-900 text-gray-300">
-    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-30">
+<body class="antialiased">
+    <nav class="site-nav sticky top-0 z-30">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-16 gap-3">
                 <a href="index.html" class="flex-shrink-0 flex items-center cursor-pointer" id="home-logo">
                     <img src="images/favicon.svg" alt="BentoPDF Logo" class="h-8 w-8 mr-2">
                     <span class="text-white font-bold text-xl">BentoPDF</span>
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="./about.html" class="nav-link">About</a>
-                    <a href="./contact.html" class="nav-link">Contact</a>
-                    <a href="index.html#tools-header" class="nav-link">All Tools</a>
-                </div>
-
-                <div class="md:hidden flex items-center gap-4">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="index.html#tools-header" class="nav-link">All Tools</a>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                        <a href="./about.html" class="nav-link" data-i18n="nav.about">About</a>
+                        <a href="./contact.html" class="nav-link" data-i18n="nav.contact">Contact</a>
+                        <a href="index.html#tools-header" class="nav-link" data-i18n="nav.allTools">All Tools</a>
+                    </div>
+                    <div class="md:hidden flex items-center gap-2">
+                        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+                        <a href="index.html#tools-header" class="nav-link" data-i18n="nav.allTools">All Tools</a>
+                    </div>
+                    <div class="flex items-center gap-2 pl-2 md:pl-4 border-l border-gray-700">
+                        <div id="locale-switcher"></div>
+                        <div id="theme-switcher"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,10 +43,10 @@
     <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
 
         <section id="about-hero" class="text-center py-16 md:py-24">
-            <h1 class="text-3xl md:text-6xl font-bold text-white mb-4">
-                BentoPDF — a PDF toolkit in the <span class="marker-slanted">AxiosTimes</span> ecosystem
+            <h1 class="text-3xl md:text-6xl font-bold text-white mb-4" data-i18n="about.heroTitle">
+                BentoPDF — a PDF toolkit in the AxiosTimes ecosystem
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto" data-i18n="about.heroSubtitle">
                 A practical set of PDF tools deployed to help you handle everyday document tasks quickly, privately, and without friction.
             </p>
         </section>
@@ -51,14 +56,12 @@
         <section id="mission-section" class="py-16 max-w-4xl mx-auto">
             <div class="text-center">
                 <i data-lucide="file-text" class="w-16 h-16 text-indigo-400 mx-auto mb-6"></i>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Our Goal</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="about.goalTitle">Our Goal</h2>
                 <p class="text-lg text-gray-400 leading-relaxed">
-                    BentoPDF is a standalone PDF utility deployed within the
+                    <span data-i18n="about.goalLead">BentoPDF is a standalone PDF utility deployed within the</span>
                     <a href="https://www.axiostimes.com" target="_blank" rel="noopener noreferrer"
-                        class="text-indigo-400 hover:text-indigo-300 underline">AxiosTimes</a>
-                    ecosystem. It is built to serve users who work with PDF files every day — whether you need to merge,
-                    split, convert, compress, sign, or organize documents. We focus on the tasks that matter most and
-                    make them accessible in one place, right in your browser.
+                        class="text-indigo-400 hover:text-indigo-300 underline"> AxiosTimes </a>
+                    <span data-i18n="about.goalTail">ecosystem. It is built to serve users who work with PDF files every day.</span>
                 </p>
             </div>
         </section>
@@ -66,19 +69,15 @@
         <div class="bg-gray-800 rounded-xl p-8 md:p-12 my-16 border border-gray-700">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left">
-                    <span class="text-indigo-400 font-bold uppercase">The AxiosTimes ecosystem</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Built for real PDF workflows</h2>
+                    <span class="text-indigo-400 font-bold uppercase" data-i18n="about.ecosystemLabel">The AxiosTimes ecosystem</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4" data-i18n="about.ecosystemTitle">Built for real PDF workflows</h2>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         <a href="https://www.axiostimes.com" target="_blank" rel="noopener noreferrer"
                             class="text-indigo-400 hover:text-indigo-300 underline">www.axiostimes.com</a>
-                        is the home of the AxiosTimes ecosystem — a group of practical tools for everyday users.
-                        BentoPDF is one of the utilities deployed in this ecosystem, focused on PDF-related tasks
-                        such as merging, converting, and editing documents without complicated setup.
+                        <span data-i18n="about.ecosystemText"> is the home of the AxiosTimes ecosystem — a group of practical tools for everyday users.</span>
                     </p>
-                    <p class="text-gray-400 leading-relaxed">
-                        All processing runs locally in your browser, so your files stay on your device. That makes
-                        BentoPDF suitable for personal, academic, and professional PDF work where privacy and speed
-                        both matter.
+                    <p class="text-gray-400 leading-relaxed" data-i18n="about.privacyText">
+                        All processing runs locally in your browser, so your files stay on your device.
                     </p>
                 </div>
                 <div class="flex justify-center">
@@ -93,8 +92,8 @@
         </div>
 
         <section id="why-bentopdf" class="py-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-                What BentoPDF <span class="marker-slanted">offers</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12" data-i18n="about.offersTitle">
+                What BentoPDF offers
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <div class="bg-gray-800 p-6 rounded-lg flex items-start gap-4">
@@ -138,18 +137,18 @@
         <div class="section-divider"></div>
 
         <section id="contact-info" class="py-16 max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Get in touch</h2>
-            <p class="text-lg text-gray-400 mb-6">
+            <h2 class="text-3xl font-bold text-white mb-4" data-i18n="about.contactTitle">Get in touch</h2>
+            <p class="text-lg text-gray-400 mb-6" data-i18n="about.contactText">
                 Questions, suggestions, or support — we are happy to hear from you.
             </p>
             <div class="space-y-3 text-lg text-gray-400">
                 <p>
-                    Website:
+                    <span data-i18n="about.website">Website</span>:
                     <a href="https://www.axiostimes.com" target="_blank" rel="noopener noreferrer"
                         class="text-indigo-400 hover:text-indigo-300 underline">www.axiostimes.com</a>
                 </p>
                 <p>
-                    Email:
+                    <span data-i18n="about.email">Email</span>:
                     <a href="mailto:axiostimes@gmail.com"
                         class="text-indigo-400 hover:text-indigo-300 underline">axiostimes@gmail.com</a>
                 </p>
@@ -159,19 +158,20 @@
         <div class="section-divider"></div>
 
         <section id="cta-section" class="text-center py-16">
-            <h2 class="text-3xl font-bold text-white mb-4">Ready to get started?</h2>
-            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-4" data-i18n="about.ctaTitle">Ready to get started?</h2>
+            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto" data-i18n="about.ctaText">
                 Explore the full set of PDF tools and handle your documents in one place.
             </p>
             <a href="index.html#tools-header"
-                class="inline-block px-8 py-3 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 text-white font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 transform hover:-translate-y-1">
+                class="inline-block px-8 py-3 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 text-white font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 transform hover:-translate-y-1"
+                data-i18n="about.ctaButton">
                 Explore All Tools
             </a>
         </section>
 
     </div>
 
-    <footer class="mt-16 border-t-2 border-gray-700 py-8">
+    <footer class="site-footer mt-16 py-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
                 <div class="mb-8 md:mb-0">
@@ -220,9 +220,7 @@
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script type="module" src="src/js/site/chrome-main.ts"></script>
 </body>
 
 </html>
