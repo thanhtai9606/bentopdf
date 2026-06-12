@@ -90,26 +90,6 @@ const init = () => {
     dom.backToGridBtn.addEventListener('click', () => switchView('grid'));
     dom.alertOkBtn.addEventListener('click', hideAlert);
 
-    const faqAccordion = document.getElementById('faq-accordion');
-    if (faqAccordion) {
-        faqAccordion.addEventListener('click', (e) => {
-            // @ts-expect-error TS(2339) FIXME: Property 'closest' does not exist on type 'EventTa... Remove this comment to see the full error message
-            const questionButton = e.target.closest('.faq-question');
-            if (!questionButton) return;
-
-            const faqItem = questionButton.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-
-            faqItem.classList.toggle('open');
-
-            if (faqItem.classList.contains('open')) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            } else {
-                answer.style.maxHeight = '0px';
-            }
-        });
-    }
-
     createIcons({ icons });
     console.log('Please share our tool and share the love!');
 };

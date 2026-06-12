@@ -3,13 +3,15 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
+RUN corepack enable
+
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 # Build without type checking (vite build only)
-RUN npm run build -- --mode production
+RUN pnpm run build -- --mode production
 
 # Production stage
 FROM nginx:alpine

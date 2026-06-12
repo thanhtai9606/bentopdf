@@ -82,7 +82,7 @@ You can run BentoPDF locally for development or personal use.
 
 ### Prerequisites
 -   [Node.js](https://nodejs.org/) (v18 or higher recommended)
--   [npm](https://www.npmjs.com/) (or yarn/pnpm)
+-   [pnpm](https://pnpm.io/)
 -   [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/install/) (for containerized setup)
 
 ### 🚀 Run BentoPDF with Docker (Quick Start)
@@ -96,7 +96,7 @@ docker run -p 3000:80 bentopdf/bentopdf:latest
 Open your browser at: http://localhost:3000.
 This is the fastest way to try BentoPDF without setting up a development environment.
 
-### 🚀 Installation with npm
+### 🚀 Installation with pnpm
 
 1.  **Clone the Repository**:
     ```bash
@@ -106,12 +106,12 @@ This is the fastest way to try BentoPDF without setting up a development environ
 
 2.  **Install Dependencies**:
     ```bash
-    npm install
+    pnpm install
     ```
 
 3.  **Run the Development Server**:
     ```bash
-    npm run dev
+    pnpm dev
     ```
     The application will be available at `http://localhost:5173`.
 
